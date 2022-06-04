@@ -1,18 +1,18 @@
-let artistName = "Childish Gambino";
+let artistName = "Logic";
+const musicMatch = function() {
 
-const lastFmToken = function() {
+    const apiKey = "70f48e3a238075767ef29e2921e77a8b";
 
-    const apiKey = "fd0e25cfe561d489c1dc55cb0411d206";
-    const apiSecret = "7b17ff9482331afdc90694c482882043";
-
-    fetch(`https://www.last.fm/api//2.0/?method=artist.getinfo&artist=${artistName}&api_key=${apiKey}&format=json`, {
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.search?apikey=${apiKey}&q_artist=${artistName}&page_size=10&format=json`, {
         method: 'GET'
     })
     .then(function(response) {
-        return response.json
+        return response.json()
     })
-    .then(function (data) {
+    .then(function(data) {
         console.log(data)
-    })
+        }
+    )
 }
-lastFmToken();
+
+musicMatch();
