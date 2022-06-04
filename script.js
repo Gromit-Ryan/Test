@@ -1,7 +1,18 @@
-const requestUrl = 'https://api.musixmatch.com/ws/1.1/artist.search?q_artist=prodigy&page_size=5'
-const api = "4c5e6e6c524011ed4c7ec9b1de5d6368"
+let artistName = "Childish Gambino";
 
-fetch(requestUrl)
-  .then(function (data) {
-    console.log(data);
-  })
+const lastFmToken = function() {
+
+    const apiKey = "fd0e25cfe561d489c1dc55cb0411d206";
+    const apiSecret = "7b17ff9482331afdc90694c482882043";
+
+    fetch(`https://www.last.fm/api//2.0/?method=artist.getinfo&artist=${artistName}&api_key=${apiKey}&format=json`, {
+        method: 'GET'
+    })
+    .then(function(response) {
+        return response.json
+    })
+    .then(function (data) {
+        console.log(data)
+    })
+}
+lastFmToken();
